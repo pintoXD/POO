@@ -2,6 +2,8 @@ package Lista_1;
 
 import java.util.*;
 
+import java.lang.Math;
+
 public class question_2 {
 
 
@@ -14,7 +16,7 @@ public class question_2 {
 	int bitNum = input.nextInt();
 
 	if (verifica(bitNum)){
-		int decNum = converter(bitNum);
+		double decNum = converter(bitNum);
 		
 		System.out.println("Decimal number is: " + decNum);
 		
@@ -65,27 +67,34 @@ public class question_2 {
 	}
 	
 	
-	private static int converter(int number){
+	private static double converter(int number){
 
 	int i;	
 		
 		String binaryDigit = Integer.toString(number);
 			
-	int sum = 0;
-	int aux = 0;
+	double sum = 0;
+	char aux;
+	int aux2;
 			
+	aux2 = binaryDigit.length() - 1;
+	
 	for (i = 0; i < binaryDigit.length(); i++){
+	//for ( i = binaryDigit.length() - 1; i <= 0 ; i--){
+	      
 		
 		aux = binaryDigit.charAt(i);
-		
-		
-			if(aux == '0')
-				sum =  sum + 0;
-			else		
-				sum = sum + (2 ^ i);
 				
-					
+			if(aux == '0')
+				
+				sum =  sum + 0;
+			
+			else					
+				sum = sum + (Math.pow(2, aux2));
+				
+			aux2--;		
 			}
+	
 		
 	return sum;
 	

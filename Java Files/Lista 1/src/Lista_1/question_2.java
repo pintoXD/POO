@@ -1,0 +1,96 @@
+package Lista_1;
+
+import java.util.*;
+
+public class question_2 {
+
+
+   
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	Scanner input = new Scanner(System.in);
+	
+	System.out.println("Manda o numero pra converter ae");
+	int bitNum = input.nextInt();
+
+	if (verifica(bitNum)){
+		int decNum = converter(bitNum);
+		
+		System.out.println("Decimal number is: " + decNum);
+		
+		
+	}
+	else
+		System.out.println("Wrong number");
+	
+	input.close();
+
+
+	}
+
+	private static boolean verifica(int a){
+		String bitVerification = Integer.toString(a);
+				
+		System.out.println("String: " + bitVerification);		
+		
+		System.out.println("Entrou na Verifica");
+		
+		
+		char test;
+		int i;
+		int soma = 0;
+		
+		for (i = 0; i < bitVerification.length(); i++)
+		{
+			test = bitVerification.charAt(i);
+			System.out.println("Char: " + test);
+			
+			if (test != '0'  && test != '1'){
+				
+				soma = soma + 1;
+			
+				
+			}
+				
+		}
+		
+		
+		if (soma != 0)
+			return false;
+		else
+		 return true;
+		
+		
+		
+	}
+	
+	
+	private static int converter(int number){
+
+	int i;	
+		
+		String binaryDigit = Integer.toString(number);
+			
+	int sum = 0;
+	int aux = 0;
+			
+	for (i = 0; i < binaryDigit.length(); i++){
+		
+		aux = binaryDigit.charAt(i);
+		
+		
+			if(aux == '0')
+				sum =  sum + 0;
+			else		
+				sum = sum + (2 ^ i);
+				
+					
+			}
+		
+	return sum;
+	
+	
+	}
+
+	
+}

@@ -1,0 +1,43 @@
+package Lista_1;
+
+public class question_2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static boolean verifica(int a){
+		String bitVerification = Integer.toString(a);	
+		
+	
+		
+		
+		
+		
+	}
+	
+	
+	private static void converter(int number){
+		
+	String binaryDigit = Integer.toString(number);
+	
+	String readString = reader.next();
+	
+	int vetorString[readString.length()];
+	
+	for (int i = 0; i < readString.length(); i++)
+	{
+		
+		
+		
+	}
+		
+	
+		
+		
+	}
+	
+	
+	
+}

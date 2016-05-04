@@ -1,0 +1,66 @@
+package Lista_1;
+
+import java.util.*;
+
+public class question_4 {
+
+	public static void calculadora(int a, int b, char op){
+		
+  double result = 0;		
+	switch (op){
+     
+     case '+':
+    	 result =  (a + b);
+    	 System.out.printf("Soma  = %f", result);
+    	 
+     case '-':
+    	 result =  (a - b);
+    	 System.out.printf("Subtração  = %f", result);    	 
+     case '*':
+    	 result =  (a*b);
+    	 System.out.printf("Multplicação  = %f", result);    	 
+     
+     case '/':
+    	 
+    	 result =  (a/b);
+    	 System.out.printf("Divisão  = %f", result);    	
+    	
+      default: 
+    	 System.out.println("Opção inválida");
+    	 break;
+     
+     
+     
+     }
+	
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static void main (String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Entrada de A");
+		int numA = input.nextInt();
+		System.out.println("Entrada de B");
+		int numB = input.nextInt();
+		System.out.println("Entrada de OP");
+		char OP = input.next().charAt(0);
+		
+		
+		calculadora(numA, numB, OP);
+		
+		
+		input.close();
+		
+		
+		
+	}
+	
+	
+}

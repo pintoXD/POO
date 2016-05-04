@@ -1,0 +1,50 @@
+package Lista_1;
+
+public class question_4 {
+
+	public int calculadora(int a, int b, char op){
+		
+    	
+		
+		
+	switch (op){
+     
+     case '+':
+    	 return a + b;
+    	 
+     case '-':
+    	 return a - b;
+    	 
+     case '*':
+    	 return a*b;
+    	 
+     case '/':
+    	 
+    	 return a/b;
+    	
+    	
+      default: 
+    	 System.out.println("Opção inválida");
+    	 break;
+     
+     
+     
+     }
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static void main (String[] args) {
+		
+		
+		
+		
+		
+	}
+	
+	
+}

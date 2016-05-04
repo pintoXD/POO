@@ -1,0 +1,62 @@
+package Lista_1;
+
+public class queston5 {
+
+  public static void recebe (String local){
+	
+   char array[] = local.toCharArray();
+   
+   int length = local.length() - 1;
+   int index;
+   int i;
+   
+   for (i = length; i <= 0; i --){
+	   if (array[i] == '/'){
+		 index = i;
+		 break;
+		 
+	   }
+   }
+   
+   
+   char novo;   
+   
+   System.out.println("Caminho eh:");
+   
+   for (i = index; i < local.length(); i ++){
+	   
+	  novo = local.charAt(i);
+	  
+	  System.out.print("" +novo);
+	   
+	   
+   }
+	  
+	  
+	  /*
+	
+	
+	char aux;
+	int index = local.length() - 1;
+	String caminho;
+    do {
+    	
+    aux = local.charAt(index);
+    
+    	
+    index--;	
+    	
+    } while (aux != '/');
+	 
+	 
+	  */
+	  
+	  
+	  
+  }
+	
+	
+	
+	
+
+}

@@ -1,0 +1,58 @@
+package Lista_1;
+
+import java.util.*;
+
+public class question_4 {
+
+	public double calculadora(int a, int b, char op){
+		
+    	
+		
+		
+	switch (op){
+     
+     case '+':
+    	 return a + b;
+    	 
+     case '-':
+    	 return a - b;
+    	 
+     case '*':
+    	 return a*b;
+    	 
+     case '/':
+    	 
+    	 return a/b;
+    	
+    	
+      default: 
+    	 System.out.println("Opção inválida");
+    	 break;
+     
+     
+     
+     }
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static void main (String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Entrada de dados");
+		int numA = input.nextInt();
+		char Op = input.nextLine();
+		
+		
+		
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,30 @@
+package Lista_1;
+
+public class queston5 {
+
+  public void static  ( String local){
+	  
+	char aux;
+	int index = local.length() - 1;
+	String caminho;
+    do {
+    	
+    aux = local.charAt(index);
+    
+    	
+    index--;	
+    	
+    } while (aux != '/');
+	 
+	 
+	  
+	  
+	  
+	  
+  }
+	
+	
+	
+	
+
+}

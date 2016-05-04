@@ -1,0 +1,60 @@
+package Lista_1;
+
+import java.util.Scanner;
+
+public class question_3 {
+	public boolean verifyPerfect(int number){
+			
+	int sum = 0;
+	
+    int i;
+    
+    for (i  = 0; i <= number/2; i++){
+    	
+    if(number%i == 0)
+    	sum = sum + i; 	
+    	
+    	
+    }
+	
+	if (sum  == number)
+		return true;
+	else
+		return false;
+	
+    
+    
+    
+	}		
+		
+		
+}
+
+
+
+
+public static void main (String[] args){
+
+	Scanner input = new Scanner(System.in);
+
+		System.out.println("Entre com o numero:")
+
+		int num = input.nextInt();
+
+
+		if(verifyPerfect(num))
+			System.out.println ("Numero fornecido eh perfeito");
+
+		else
+			System.out.println("Number is not perfect");
+	
+
+
+
+}
+
+	
+	
+	
+	
+

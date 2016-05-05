@@ -1,0 +1,32 @@
+package question_3;
+
+import java.util.Scanner;
+
+public class TestCalc {
+	public static void main(String[] args) {
+		
+	Calculator teste = new Calculator();
+	Scanner input = new Scanner(System.in);
+		
+	System.out.println("Enter with A:");
+	teste.setA(input.nextDouble());
+	
+	System.out.println("Enter with B:");
+	teste.setB(input.nextDouble());	
+	
+	
+	System.out.println("Choose operation + - * /:");
+	char OP = input.next().charAt(0);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	}
+
+}

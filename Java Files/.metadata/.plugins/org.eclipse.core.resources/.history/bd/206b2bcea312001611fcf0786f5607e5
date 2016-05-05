@@ -1,0 +1,69 @@
+package question_10;
+
+import java.util.Scanner;
+
+public class BankAccountTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+	BankAccount flow = new BankAccount();
+	Scanner input = new Scanner(System.in);
+	char OP;
+	
+	do{
+		System.out.println("Choose your option");
+		System.out.print("1- Register Agency\n2- Register Account\n3- Check Balance\n4- Realize Draft\n5- Realize Deposit\n0- Sair\n ");
+		OP = input.next().charAt(0);
+		
+		switch (OP){
+		case '1':
+			System.out.println("Enter with the agency number");
+			String temp = input.nextLine();
+			System.out.println("temp = "+temp);
+			//flow.setAgency(temp);
+			break;
+			
+		case '2':
+			System.out.print("Enter with account number");
+			flow.setAccount(input.nextLine());
+			break;
+			
+		case '3':
+			System.out.println("Current balance= "+flow.getBalance());
+			break;
+			
+		case '4':
+			System.out.println("Choose the value to draft:");
+			flow.draft(input.nextDouble());
+			break;
+			
+		case '5':
+			System.out.println("Set the value to deposit:");
+			flow.deposit(input.nextDouble());
+			break;
+			
+		default:
+			System.out.println("Invalid option");
+		}	
+		
+		} while(OP != '0');
+
+	
+	
+	input.close();
+	
+	
+	}
+
+}
+
+
+		
+		
+		
+		
+
+	
+
+

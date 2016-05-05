@@ -1,0 +1,28 @@
+package question_10;
+
+public class BankAccount extends SetupBA {
+	
+	
+	
+public void draft(){
+	
+	if (getValue() < getBalance()){
+		System.out.println("Draft accepted");
+		setBalance(getBalance() - getValue());
+		
+	}
+	
+	else 
+		System.out.println("Draft denied. Insufficient funds.");
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

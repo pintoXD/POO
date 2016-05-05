@@ -1,0 +1,47 @@
+package question_10;
+
+public class SetupBA {
+	
+	private String account;
+	private String agency;
+	private double balance;
+	private double value;
+	
+	public void setAccount(String account){
+		this.account = account;
+				
+	}
+	
+	public void setValue(double value){
+		this.value = value;
+	}
+	
+	public void setAgency(String agency){
+		this.agency = agency;
+		
+	}
+	
+	public void setBalance(double balance){
+		this.balance = balance;
+		
+	}
+	
+	public String getAccount(){
+		return account;
+		
+	}
+	
+	public String getAgency(){
+		return agency;
+	}
+	
+	public double getBalance(){
+		return balance;
+	}
+
+	public double getValue(){
+		return value;
+	}
+	
+
+}

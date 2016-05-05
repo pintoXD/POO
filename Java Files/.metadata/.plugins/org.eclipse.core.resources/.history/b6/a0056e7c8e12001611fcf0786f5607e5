@@ -1,0 +1,15 @@
+package question_3;
+
+public class TestCalc {
+	public static void main(String[] args) {
+		
+	Calculator teste = new Calculator();
+		
+		
+		
+	
+	
+		
+	}
+
+}

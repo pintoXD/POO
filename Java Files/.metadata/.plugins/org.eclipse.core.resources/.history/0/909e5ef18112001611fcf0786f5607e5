@@ -1,0 +1,21 @@
+package qeustion_1;
+
+public class TestData {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+    data teste = new data(05,8,2016);
+    
+      
+    System.out.printf("Data: %d/%d/%d\n", getDay(),getMonth(),getYear());	
+    
+    
+    
+    
+    	
+		
+		
+	}
+
+}

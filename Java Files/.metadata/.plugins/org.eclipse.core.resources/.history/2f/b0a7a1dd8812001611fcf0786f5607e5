@@ -1,0 +1,21 @@
+package question_2;
+
+public class AdressBook {
+
+ private String name;
+ private String adress;
+ private String phone;
+ private String birthday;
+ 
+ 		
+ 
+ 
+ 
+ 
+
+	
+	
+	
+	
+	
+}

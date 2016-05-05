@@ -1,0 +1,41 @@
+package question_2;
+
+public class AdressBook {
+
+	private String name;
+	private String adress;
+	private String phone;
+	private String birthday;
+
+
+
+
+	public void setBook(String name, String adress, String phone, String birthday){
+
+		this.name = name;
+		this.adress = adress;
+		this.phone = phone;
+		this.birthday = birthday;
+
+
+	}
+
+
+	public String getName(){
+		return name;
+	}
+
+	public String getAdress(){
+		return adress;
+	}
+
+	public String getPhone(){
+		return phone;
+	}
+
+	public String getBirthday(){
+		return birthday;
+	}
+
+
+}

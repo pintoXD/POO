@@ -1,0 +1,27 @@
+package question_10;
+
+import java.util.Scanner;
+
+public class BankAccountTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+	BankAccount flow = new BankAccount();
+	Scanner input = new Scanner(System.in);
+	
+	do{
+		System.out.println("Choose your option");
+		System.out.print("1- Balance\n2-Draft\n3-Deposit");
+		
+		
+	}
+	
+		
+		
+		
+		
+
+	}
+
+}

@@ -1,0 +1,40 @@
+package question_10;
+
+import java.util.Scanner;
+
+public class BankAccountTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+	BankAccount flow = new BankAccount();
+	Scanner input = new Scanner(System.in);
+	
+	do{
+		System.out.println("Choose your option");
+		System.out.print("1- Register Agency\n2- Register Account\n3- Check Balance\n4- Realize Draft\n5- Realize Deposit\n0- Sair\n ");
+		char OP = input.next().charAt(0);
+		
+		switch (OP){
+		case '1':
+		case '2':
+		case '3':
+		case '4':
+		case '5':
+		default:
+			System.out.println("Invalid option");
+				
+		
+		} while(OP != '0');
+		
+		
+	}
+	
+		
+		
+		
+		
+
+	}
+
+}

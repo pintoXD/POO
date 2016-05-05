@@ -1,0 +1,48 @@
+package qeustion_1;
+
+public class Data {
+	
+	private day;
+	private month;
+	private year;
+
+public receiver(int a, int b, int c){
+
+	day = a;
+	month = b;
+	year = c;
+
+
+}
+	
+public getDay(){
+
+	return day;
+
+}	
+
+
+public getMonth(){
+
+	return month;
+
+}	
+
+
+public getYear(){
+
+	return year;
+
+}
+
+public void printData(){
+
+System.out.printf("Data: %d/%d/%d\n", getDay(),getMonth(),getYear());			
+
+}
+
+
+
+
+
+}

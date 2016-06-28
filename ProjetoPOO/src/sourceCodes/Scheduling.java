@@ -1,9 +1,13 @@
 package sourceCodes;
 
-public class Scheduling {
+public class Scheduling extends Person {
 	
-	private String name;
-	private String date;
+	private String medType;
+	private String consultDate;
+	
+	 
+	
+		
 	
 	
 	

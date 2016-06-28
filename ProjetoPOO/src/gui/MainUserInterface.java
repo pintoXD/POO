@@ -19,82 +19,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class MainUserInterface extends JFrame {
 
 	//private static final LayoutManager BorderLayout.CENTER = null;
-	private JButton medButton, secButton;
+	private JButton secButton;
 	private JPanel testPanel;
-	private String tabOneTitle = "Schedulling";
+	//private String tabOneTitle = "Schedulling";
 	private String tabTwoTitle = "TestTab";
 	private int extraWindowWidth = 100;
-	
-	
-	public void addComponentToPane(Container pane){
-		
-		JTabbedPane tabbedPane = new JTabbedPane();
-		JPanel screenOne = new JPanel(new BorderLayout())/*{
-			//Make one test to see if it is really needed
-            public Dimension getPreferredSize() {
-                Dimension size = super.getPreferredSize();
-                size.width += extraWindowWidth;
-                return size;
-            }
-			
-			
-			
-		}*/;
-		
-		medButton = new JButton("Medico");
-		secButton = new JButton("Secretary");
-		
-		//screenOne.setLayout(BorderLayout.CENTER);
-		//Container testPane = null;
-		
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new GridLayout(1, 2));
-		buttonPanel.add(medButton);
-		buttonPanel.add(secButton);
-		buttonPanel.setSize(HEIGHT, HEIGHT);
-		
-		
-		//screenOne.add(medButton,BorderLayout.SOUTH);
-		
-		//testPane.add(screenOne, BorderLayout.SOUTH);
-		
-		screenOne.add(buttonPanel, BorderLayout.SOUTH);
-		
-		
-		JPanel screenTwo = new JPanel(new BorderLayout());
-		
-		screenTwo.add(new JTextField("Enter code here", 30), BorderLayout.SOUTH);
-		
-		tabbedPane.addTab(tabOneTitle, screenOne);
-		tabbedPane.addTab(tabTwoTitle, screenTwo);
-		
-		pane.add(tabbedPane,BorderLayout.CENTER);
-		
-	
-		
-		
-	}
-	
-	public static void createAndShowGUI(){
-		
-		JFrame frame = new JFrame("Teste Frame");
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		MainUserInterface demo = new  MainUserInterface();
-		
-		 demo.addComponentToPane(frame.getContentPane());
-		 
-		 frame.pack();
-		 frame.setSize(500, 500);
-		 frame.setLocationRelativeTo(null);
-		 frame.setVisible(true);
-		
-	}
-	
-	
-	
-	
 	
 	
 	
@@ -123,6 +52,9 @@ public class MainUserInterface extends JFrame {
 	
 	
 	public static void main (String[] args){
+		
+		
+		CreateAndShowGUI teste = new CreateAndShowGUI();
 		 
         /* Use an appropriate Look and Feel */
         try {
@@ -144,7 +76,7 @@ public class MainUserInterface extends JFrame {
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createAndShowGUI();
+                teste.createAndShowGUI();
             }
         });
 		

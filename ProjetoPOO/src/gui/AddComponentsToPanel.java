@@ -8,13 +8,19 @@ import javax.swing.JTabbedPane;
 public class AddComponentsToPanel {
 	
 	public void addComponentsToPanel(Container pane){
-		
-		SecretaryTab secretary = new SecretaryTab();
-		MedicTab medic = new MedicTab();
+
+		FirstTab schedulling = new FirstTab();
+		SecondTab secondTab = new SecondTab();
+		ThirdTab thirdTab = new ThirdTab();
+		ForthTab forthTab = new ForthTab();
+		FifthTab fifthTab = new FifthTab();
 		JTabbedPane tabbedPane = new JTabbedPane();
 		
-		tabbedPane.add("Secretary", secretary.createSecTab());
-		tabbedPane.add("Medic", medic. createMedicPane());
+		tabbedPane.add(schedulling.getTabTitle(), schedulling.createFirstPane());
+		tabbedPane.add(secondTab.getTabTitle(), secondTab.createSecondPane());
+		tabbedPane.add(thirdTab.getTabTitle(), thirdTab.createThirdPane());
+		tabbedPane.add(forthTab.getTabTitle(), forthTab.createForthPane());
+		tabbedPane.add(fifthTab.getTabTitle(), fifthTab.createFifthPane());
 		
 		pane.add(tabbedPane,BorderLayout.CENTER);
 		

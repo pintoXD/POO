@@ -18,16 +18,16 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
 
 
-public class MedicTab {
+public class ForthTab {
 	
 	private JButton medButton, testButton;
-	private String tabOneTitle = "Schedulling";
+	private String tabTitle = "Schedulling";
 	private int extraWindowWidth = 100;
 	private JTabbedPane tabbedPane;
 	
 	
 	
-	public JPanel createMedicPane(){
+	public JPanel createForthPane(){
 		
 		
 		
@@ -61,6 +61,11 @@ public class MedicTab {
 	}
 	
 	
+	public String getTabTitle(){
+		
+		return tabTitle;
+		
+	}
 	
 	
 	

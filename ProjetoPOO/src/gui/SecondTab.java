@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 
+import demos.TableDemo;
 
 public class SecondTab {
 	
@@ -38,8 +39,14 @@ public class SecondTab {
 		
 		buttonPanel.add(medButton);
 		buttonPanel.add(testButton);
-				
+		
+		
+		TableDemo exemplo = new TableDemo();
+		
+		
+		screenMedTab.add(exemplo, BorderLayout.CENTER);
 		screenMedTab.add(buttonPanel, BorderLayout.SOUTH);
+		
 		
 	
 		

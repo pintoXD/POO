@@ -18,7 +18,7 @@ public class CreateAndShowGUI {
 		 demo.addComponentsToPanel(frame.getContentPane());
 		 
 		 frame.pack();
-		 frame.setSize(500, 500);
+		 frame.setSize(1000, 250);
 		 frame.setLocationRelativeTo(null);
 		 frame.setVisible(true);
 		

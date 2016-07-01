@@ -21,7 +21,7 @@ public class ThirdTab {
 		
 		
 		JPanel screenMedTab = new JPanel(new BorderLayout())/*{
-				//Make one test to see if it is really needed
+				//Make one test to see if it is really needed 
 	            public Dimension getPreferredSize() {
 	                Dimension size = super.getPreferredSize();
 	                size.width += extraWindowWidth;

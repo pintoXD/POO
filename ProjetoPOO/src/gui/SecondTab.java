@@ -44,6 +44,8 @@ public class SecondTab {
 		TableDemo exemplo = new TableDemo();
 		
 		
+		
+		
 		screenMedTab.add(exemplo, BorderLayout.CENTER);
 		screenMedTab.add(buttonPanel, BorderLayout.SOUTH);
 		

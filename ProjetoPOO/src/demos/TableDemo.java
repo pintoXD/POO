@@ -1,42 +1,5 @@
 package demos;
 
-/*
- * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle or the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
-
-
-
-/*
- * TableDemo.java requires no other files.
- */
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -44,11 +7,23 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import sourceCodes.*;
 
 /** 
  * TableDemo is just like SimpleTableDemo, except that it
  * uses a custom TableModel.
  */
+
+/*
+* The object Patitent must contain name, sex, date, and type of med. Must be make
+, too, getters and setters methods to this variables.
+
+*
+*
+*
+*/
+
 public class TableDemo extends JPanel {
     private boolean DEBUG = false;
 
@@ -67,22 +42,75 @@ public class TableDemo extends JPanel {
     }
 
     class MyTableModel extends AbstractTableModel {
+
+    /*private List <Patient> rows;            
+
+    public MyTableModel (List <Patient> patientList){
+
+        rows = new ArrayList<Patient>(patientList);
+
+
+     }
+*/
         private String[] columnNames = {"Nome do Paciente",
                                         "Data da Consulta",
                                         "Médico",
-                                        "Código Consulta"
-        								};	
-                                    
-        private Object[][] data = {
+                                        "Código Consulta",
+                                        "Check",
+                              		};	
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //Isso vai ter de vir de um ArrayList                            
+        
+        /*private Object[] data /*= {
 	    {"Kathy", "Smith",
 	     "Snowboarding", new Integer(5), new Boolean(false)},
 	    {"John", "Doe",
-	     "Rowing", new Integer(3), new Boolean(true)},
-	    {"Sue", "Black",
-	     "Knitting", new Integer(2), new Boolean(false)},
-	    {"Jane", "White",
-	     "Speed reading", new Integer(20), new Boolean(true)}};
-	
+	     "Rowing", new Integer(3), new Boolean(true)}};
+	   // {"Sue", "Black",
+	    // "Knitting", new Integer(2), new Boolean(false)},
+	    //{"Jane", "White",
+	    // "Speed reading", new Integer(20), new Boolean(true)}};
+	   */;
+
+	   ArrayList<Person> rows = new ArrayList<Person>();
+	   private Object[][] data = new Object[rows.size()][3];	
+	   
+	   
+	   
+       public void addPatientToTable(){
+    	int i;
+    	
+    	//ArrayList<Person> rows = new ArrayList<Person>();
+    	//Object[] data;
+    	
+    	for(i = 0; i < rows.size(); i++){
+    		//for(j = 0; j< 3;j++)
+    		
+    		 data[i][0] = rows.get(i).getName();
+    		 data[i][1] = rows.get(i).getConsultDate();
+    		 data[i][2] = rows.get(i).getMedType();
+    	
+    		
+    	}
+   
+    	
+    	//Object[] data = rows.toArray(new Object[rows.size()]);        
+    	//System.out.println(listaVetor[1]); //saída = "bbb"
+    	
+    	
+    	//return data;
+    	
+    	   
+       }
 
         public int getColumnCount() {
             return columnNames.length;
@@ -100,7 +128,11 @@ public class TableDemo extends JPanel {
             return data[row][col];
         }
 
-        /*
+        
+        
+        
+        
+     /*
          * JTable uses this method to determine the default renderer/
          * editor for each cell.  If we didn't implement this method,
          * then the last column would contain text ("true"/"false"),
@@ -111,13 +143,24 @@ public class TableDemo extends JPanel {
         }
 
         /*
+        public void addTeste(){
+        	
+       fireTableRowsInserted(2,2);
+        	
+        }
+        */
+        
+        
+        
+        
+        /*
          * Don't need to implement this method unless your table's
          * editable.
          */
-        public boolean isCellEditable(int row, int col) {
+     /*   public boolean isCellEditable(int row, int col) {
             //Note that the data/cell address is constant,
             //no matter where the cell appears onscreen.
-            if (col < 2) {
+            if (col < 4) {
                 return false;
             } else {
                 return true;
@@ -128,7 +171,7 @@ public class TableDemo extends JPanel {
          * Don't need to implement this method unless your table's
          * data can change.
          */
-        public void setValueAt(Object value, int row, int col) {
+     /* public void setValueAt(Object value, int row, int col) {
             if (DEBUG) {
                 System.out.println("Setting value at " + row + "," + col
                                    + " to " + value
@@ -144,7 +187,8 @@ public class TableDemo extends JPanel {
                 printDebugData();
             }
         }
-
+*/
+        /*
         private void printDebugData() {
             int numRows = getRowCount();
             int numCols = getColumnCount();
@@ -159,7 +203,7 @@ public class TableDemo extends JPanel {
             System.out.println("--------------------------");
         }
     }
-
+*/
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
@@ -193,4 +237,5 @@ public class TableDemo extends JPanel {
     }
 
      */
+}
 }

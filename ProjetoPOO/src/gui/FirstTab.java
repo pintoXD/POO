@@ -1,5 +1,9 @@
 package gui;
 
+
+import java.util.List;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,16 +26,17 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
 
+import sourceCodes.*;
+
 
 public class FirstTab extends JPanel implements ActionListener {
 	
 	private JButton medButton, testButton;
 	private String tabTitle = "Schedulling";
-	private int extraWindowWidth = 100;
-	private JTabbedPane tabbedPane;
-	private ActionEvent evento;
 	private JTextField nameReceive, dateReceive;
 	private JComboBox medList;
+	private List <Person> patientsList = new ArrayList<Person>();
+	
 	public JPanel createFirstPane(){
 		String medTypes[] = {"<Selecionar>","Cardiologista",
 				"Clínico Geral",
@@ -178,16 +183,19 @@ public class FirstTab extends JPanel implements ActionListener {
 			if(event.getSource() == medButton){
 			//JOptionPane.showMessageDialog(null, "O botão medButton foi clicado");
 			
-			String value = medList.getSelectedItem().toString();
+			String medic = medList.getSelectedItem().toString();
 			String name= nameReceive.getText().toString();
 			String date= dateReceive.getText().toString();
 			
 			System.out.println("Nome: "+name);
 			System.out.println("Data; "+date);
-			System.out.println("Médico:" +value);
+			System.out.println("Médico:" +medic);
 			
+			addToList(name, date, medic, false);
 			
+			JOptionPane.showMessageDialog(null, "Consulta agendada com sucesso.");
 			
+			clearFields();
 			
 			}
 			
@@ -208,7 +216,9 @@ public class FirstTab extends JPanel implements ActionListener {
 		
 	}
 	
-	
+	public void addToList(String name, String date, String medic, boolean state){
+		patientsList.add(new Person(name, date, medic, false));
+	}
 	
 	
 	

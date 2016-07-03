@@ -4,12 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel; 
 import javax.swing.JTabbedPane;
 
+import tables.TableImplementation;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
-
-import demos.TableDemo;
 
 public class SecondTab {
 	
@@ -41,7 +41,7 @@ public class SecondTab {
 		buttonPanel.add(testButton);
 		
 		
-		TableDemo exemplo = new TableDemo();
+		TableImplementation exemplo = new TableImplementation();
 		
 		
 		

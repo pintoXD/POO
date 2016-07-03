@@ -1,4 +1,4 @@
-package demos;
+package tables;
 
 import sourceCodes.*;
 

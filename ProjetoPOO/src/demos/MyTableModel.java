@@ -272,31 +272,6 @@ public class MyTableModel extends AbstractTableModel {
 
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     /* Remove todos os registros. */
   /*  public void limpar() {
         // Remove todos os elementos da lista de sócios.

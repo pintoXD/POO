@@ -30,8 +30,8 @@ public class FirstTab extends JPanel implements ActionListener {
 	private int extraWindowWidth = 100;
 	private JTabbedPane tabbedPane;
 	private ActionEvent evento;
-	
-	
+	private JTextField nameReceive, dateReceive;
+	private JComboBox medList;
 	public JPanel createFirstPane(){
 		String medTypes[] = {"<Selecionar>","Cardiologista",
 				"Clínico Geral",
@@ -55,7 +55,7 @@ public class FirstTab extends JPanel implements ActionListener {
 	            }*/;
 				
 		
-		JComboBox medList = new JComboBox(medTypes);
+		medList = new JComboBox(medTypes);
 		
 		medButton = new JButton("OK");	
 		testButton = new JButton("Limpar");
@@ -65,16 +65,15 @@ public class FirstTab extends JPanel implements ActionListener {
 		JLabel date = new JLabel("Data Desejada");
 		
 		
-		JTextField nameReceive = new JTextField(20);
-		JTextField dateReceive = new JTextField(20);
+		 nameReceive = new JTextField(20);
+		 dateReceive = new JTextField(20);
 		
-		ButtonHandler handler = new ButtonHandler(medButton, testButton, medList);
+		
+		FirstTab teste = new FirstTab();
+		ButtonHandler handler = teste.new ButtonHandler(medButton, testButton, medList, nameReceive, dateReceive);
 		
 		medList.setSelectedIndex(0);
 		medList.addActionListener(handler);
-		
-		
-		
 		
 		medButton.addActionListener(handler);
 		testButton.addActionListener(handler);
@@ -153,14 +152,18 @@ public class FirstTab extends JPanel implements ActionListener {
 	{
 		 private JButton medButton, testButton;
 		 private JComboBox medList;
+		 private JTextField nameReceive;
+		 private JTextField dateReceive;
 		 
-		public ButtonHandler(JButton medButton, JButton testButton, JComboBox medList) {
+		public ButtonHandler(JButton medButton, JButton testButton, JComboBox medList, JTextField nameReceive, JTextField dateReceive ) {
 	
 			// TODO Auto-generated constructor stub
 		
 		this.medButton = medButton;
 		this.testButton = testButton;
 		this.medList = medList;
+		this.nameReceive = nameReceive;
+		this.dateReceive = dateReceive;
 		
 		}
 		 
@@ -172,13 +175,44 @@ public class FirstTab extends JPanel implements ActionListener {
 		public void actionPerformed(ActionEvent event)
 		{
 			//JOptionPane.showMessageDialog(FirstTab.this, String.format("Você pressionou: %s", event.getActionCommand()));
-			if(event.getSource() == medButton)
-			JOptionPane.showMessageDialog(null, "O botão medButton foi clicado");
+			if(event.getSource() == medButton){
+			//JOptionPane.showMessageDialog(null, "O botão medButton foi clicado");
 			
-			if(event.getSource() == testButton)
-			JOptionPane.showMessageDialog(null, "O botão testButton foi clicado");
+			String value = medList.getSelectedItem().toString();
+			String name= nameReceive.getText().toString();
+			String date= dateReceive.getText().toString();
+			
+			System.out.println("Nome: "+name);
+			System.out.println("Data; "+date);
+			System.out.println("Médico:" +value);
+			
+			
+			
+			
+			}
+			
+			
+			if(event.getSource() == testButton){
+			//JOptionPane.showMessageDialog(null, "O botão testButton foi clicado");
+			clearFields();
+			}
+			
 			
 		}
+	
+	public void clearFields(){
+		medList.setSelectedIndex(0);
+		nameReceive.setText(null);
+		dateReceive.setText(null);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	}
 
 	@Override

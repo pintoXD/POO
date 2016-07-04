@@ -2,12 +2,22 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.util.List;
 
+import sourceCodes.*;
 import javax.swing.JTabbedPane;
 
 public class AddComponentsToPanel {
 	
+	//private List<Person> listOfPatients;
+	
+	
 	public void addComponentsToPanel(Container pane){
+		
+		//List<Person> = DeserializeData("PatientsData");
+		
+		
+		
 
 		FirstTab schedulling = new FirstTab();
 		SecondTab secondTab = new SecondTab();

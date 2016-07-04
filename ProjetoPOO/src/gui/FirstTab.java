@@ -35,9 +35,14 @@ public class FirstTab extends JPanel implements ActionListener {
 	private String tabTitle = "Schedulling";
 	private JTextField nameReceive, dateReceive;
 	private JComboBox medList;
-	private List <Person> patientsList = new ArrayList<Person>();
+	private int count = 0;
+	//private List <Person> patientsList;
 	
 	public JPanel createFirstPane(){
+		
+		//patientsList = list.getList();
+		//patientsList = new ArrayList<Person>();
+		
 		String medTypes[] = {"<Selecionar>","Cardiologista",
 				"Clínico Geral",
 				"Gastroenterologista",
@@ -159,6 +164,8 @@ public class FirstTab extends JPanel implements ActionListener {
 		 private JComboBox medList;
 		 private JTextField nameReceive;
 		 private JTextField dateReceive;
+		 private List <Person> patientsList;
+		 private DeserializeData deSerialize = new DeserializeData("PatientData.ser");
 		 
 		public ButtonHandler(JButton medButton, JButton testButton, JComboBox medList, JTextField nameReceive, JTextField dateReceive ) {
 	
@@ -169,6 +176,9 @@ public class FirstTab extends JPanel implements ActionListener {
 		this.medList = medList;
 		this.nameReceive = nameReceive;
 		this.dateReceive = dateReceive;
+		
+		
+		
 		
 		}
 		 
@@ -194,7 +204,7 @@ public class FirstTab extends JPanel implements ActionListener {
 			addToList(name, date, medic, false);
 			
 			JOptionPane.showMessageDialog(null, "Consulta agendada com sucesso.");
-			
+			count++;
 			clearFields();
 			
 			}
@@ -217,7 +227,22 @@ public class FirstTab extends JPanel implements ActionListener {
 	}
 	
 	public void addToList(String name, String date, String medic, boolean state){
+		
+		if(count == 0){
+			patientsList = new ArrayList<Person>();
+		
+			patientsList.add(new Person(name, date, medic, false));
+			
+			SerializeData serialize = new SerializeData(patientsList);
+		}
+			
+		else{	
+		//patientsList = deSerialize.getList();
+		
 		patientsList.add(new Person(name, date, medic, false));
+		
+		SerializeData serialize = new SerializeData(patientsList);
+		}
 	}
 	
 	

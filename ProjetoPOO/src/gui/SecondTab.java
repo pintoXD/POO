@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class SecondTab {
 	
@@ -17,6 +18,8 @@ public class SecondTab {
 	private String tabTitle = "Schedulling";
 	private int extraWindowWidth = 100;
 	private JTabbedPane tabbedPane;
+	private JComboBox optionList;
+	
 	
 	
 	
@@ -34,6 +37,16 @@ public class SecondTab {
 				
 		medButton = new JButton("Medico");	
 		testButton = new JButton("Test Button");
+		  
+		String options[] = {"Excluir", "Alterar", "Procurar"};	
+		
+		
+		optionList = new JComboBox(options);
+		
+		
+		
+		
+		
 		
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 		

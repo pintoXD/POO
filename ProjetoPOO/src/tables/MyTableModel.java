@@ -23,17 +23,20 @@ import java.awt.GridLayout;
 
 public class MyTableModel extends AbstractTableModel {
     /* Lista de Sócios que representam as linhas. */
-    private List<Person> linhas;
+    private List<Person> linhasPatientsList;
 
+    private int permissionVerifier;
+    private int lastColumn;
+    
     /* Array de Strings com o nome das colunas. */
     private String[] colunas = new String[] {
             "Nome", "Data Da Consulta", "Médico", "Chk"};
-
+  
 
     /* Cria um FuncionarioTableModel vazio. */
     public MyTableModel() {
-        linhas = new ArrayList<Person>();
-        Person teste = new Person();
+        linhasPatientsList = new ArrayList<Person>();
+       /* Person teste = new Person();
         
         teste.setName("Nome");
         teste.setConsultDate("hoje");
@@ -48,14 +51,14 @@ public class MyTableModel extends AbstractTableModel {
         
         linhas.add(teste);
         linhas.add(teste2);
-        
+       */ 
         
     }
 
     /* Cria um FuncionarioTableModel carregado com
      * a lista de sócios especificada. */
     public MyTableModel(List<Person> listaDePacientes) {
-        linhas = new ArrayList<Person>(listaDePacientes);
+        linhasPatientsList = new ArrayList<Person>(listaDePacientes);
     }
 
 
@@ -71,7 +74,7 @@ public class MyTableModel extends AbstractTableModel {
     @Override
     public int getRowCount() {
         // Retorna o tamanho da lista de sócios.
-        return linhas.size();
+        return linhasPatientsList.size();
     }
 
     /* Retorna o nome da coluna no índice especificado.
@@ -124,7 +127,7 @@ public class MyTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         // Pega o sócio da linha especificada.       
-        Person pessoa = linhas.get(rowIndex);
+        Person pessoa = linhasPatientsList.get(rowIndex);
 
         // Retorna o campo referente a coluna especificada.
         // Aqui é feito um switch para verificar qual é a coluna
@@ -156,8 +159,30 @@ public class MyTableModel extends AbstractTableModel {
      * Neste caso, estará sempre retornando false, não permitindo que nenhuma
      * célula seja editada. */
    
+	public int getPermissionVerifier() {
+		return permissionVerifier;
+	}
+
+	public void setPermissionVerifier(int permissionVerifier) {
+		this.permissionVerifier = permissionVerifier;
+	}
+    
+	
+	public void setLastColumn(int lastColumn){
+		this.lastColumn = lastColumn;
+	}
+	
+	public int getLastColumn(){
+		return lastColumn;
+	}
+	
+	
+	
+    
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if(columnIndex == 3)
+        if(getPermissionVerifier() == 1)
+        	return true;
+        else if ((getPermissionVerifier() == 0) && (getLastColumn() == 1) && (columnIndex == 4))
         	return true;
         else
         	return false;
@@ -180,8 +205,8 @@ public class MyTableModel extends AbstractTableModel {
 
     /* Retorna o sócio da linha especificada. */
     public Person getFuncionario(int indiceLinha) {
-            if(indiceLinha < linhas.size()){
-                return linhas.get(indiceLinha);
+            if(indiceLinha < linhasPatientsList.size()){
+                return linhasPatientsList.get(indiceLinha);
             }
         return null;
     }
@@ -189,7 +214,7 @@ public class MyTableModel extends AbstractTableModel {
     /* Adiciona um registro. */
     public void addPaciente(Person paciente) {
         // Adiciona o registro.
-        linhas.add(paciente);
+        linhasPatientsList.add(paciente);
 
         // Pega a quantidade de registros e subtrai um para achar
         // o último índice. É preciso subtrair um, pois os índices
@@ -204,8 +229,8 @@ public class MyTableModel extends AbstractTableModel {
     /* Remove a linha especificada. */
     public void removePaciente(int indiceLinha) {
         // Remove o sócio da linha especificada.  
-            if(indiceLinha < linhas.size()){
-                linhas.remove(indiceLinha);
+            if(indiceLinha < linhasPatientsList.size()){
+                linhasPatientsList.remove(indiceLinha);
 
         // Reporta a mudança. O JTable recebe a notificação
         // e se redesenha permitindo que visualizemos a atualização.
@@ -220,7 +245,7 @@ public class MyTableModel extends AbstractTableModel {
         int tamanhoAntigo = getRowCount();
 
         // Adiciona os registros.
-        linhas.addAll(funcs);
+        linhasPatientsList.addAll(funcs);
 
         // Reporta a mudança. O JTable recebe a notificação
         // e se redesenha permitindo que visualizemos a atualização.
@@ -230,7 +255,7 @@ public class MyTableModel extends AbstractTableModel {
     private boolean DEBUG = false;
     public void setValueAt(Object teste, int rowIndex, int columnIndex) {
     	
-    	Person pessoa = linhas.get(rowIndex);
+    	Person pessoa = linhasPatientsList.get(rowIndex);
     	
     	
     	
@@ -239,25 +264,25 @@ public class MyTableModel extends AbstractTableModel {
         case 0: // Primeira coluna é o nome.
             pessoa.setName(teste.toString());
             fireTableCellUpdated(rowIndex, columnIndex);
-            linhas.set(rowIndex, pessoa);
+            linhasPatientsList.set(rowIndex, pessoa);
             System.out.println("getName: "+pessoa.getName());
             break;
         case 1: // Segunda coluna é o telefone.
             pessoa.setConsultDate(teste.toString());
             fireTableCellUpdated(rowIndex, columnIndex);
-            linhas.set(rowIndex, pessoa);
+            linhasPatientsList.set(rowIndex, pessoa);
             System.out.println("getConsultDate: "+pessoa.getConsultDate());
             
             break;
         case 2:
         	pessoa.setMedType(teste);
-        	linhas.set(rowIndex, pessoa);
+        	linhasPatientsList.set(rowIndex, pessoa);
         	System.out.println("getMedType: "+pessoa.getMedType());
         	fireTableCellUpdated(rowIndex, columnIndex);
         	break;
         case 3:
         	pessoa.setStatusConsult(((Boolean) teste).booleanValue()); 
-        	linhas.set(rowIndex, pessoa);  
+        	linhasPatientsList.set(rowIndex, pessoa);  
         	if(pessoa.isStatusConsult())
         		System.out.println("getMedType: True at Cell" +rowIndex);
         	else
@@ -269,6 +294,8 @@ public class MyTableModel extends AbstractTableModel {
         }
         fireTableCellUpdated(rowIndex, columnIndex);
     }
+
+
 
 
     

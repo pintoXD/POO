@@ -75,8 +75,8 @@ public class FirstTab extends JPanel implements ActionListener {
 		JLabel date = new JLabel("Data Desejada");
 		
 		
-		 nameReceive = new JTextField(20);
-		 dateReceive = new JTextField(20);
+		 nameReceive = new JTextField(50);
+		 dateReceive = new JTextField(50);
 		
 		
 		FirstTab teste = new FirstTab();
@@ -165,7 +165,7 @@ public class FirstTab extends JPanel implements ActionListener {
 		 private JTextField nameReceive;
 		 private JTextField dateReceive;
 		 private List <Person> patientsList;
-		 private DeserializeData deSerialize = new DeserializeData("PatientData.ser");
+		 private DeserializeData deSerialize = new DeserializeData("PatientsData.ser");
 		 
 		public ButtonHandler(JButton medButton, JButton testButton, JComboBox medList, JTextField nameReceive, JTextField dateReceive ) {
 	
@@ -228,7 +228,7 @@ public class FirstTab extends JPanel implements ActionListener {
 	
 	public void addToList(String name, String date, String medic, boolean state){
 		
-		if(count == 0){
+		if(deSerialize.getList() == null){
 			patientsList = new ArrayList<Person>();
 		
 			patientsList.add(new Person(name, date, medic, false));
@@ -237,7 +237,7 @@ public class FirstTab extends JPanel implements ActionListener {
 		}
 			
 		else{	
-		//patientsList = deSerialize.getList();
+		patientsList = deSerialize.getList();
 		
 		patientsList.add(new Person(name, date, medic, false));
 		

@@ -31,12 +31,13 @@ public class SecondTab extends MyTableModel implements ActionListener{
 	private JComboBox optionList;
 	private JTextField searchField;
 	private List<Person> tablePatientsList;
-	
+	TableImplementation exemplo;
 	
 	public JPanel createSecondPane(List<Person>tablePatientsList){
 		
-		
-		tablePatientsList = new ArrayList<Person>(tablePatientsList);
+		if(tablePatientsList == null)
+			tablePatientsList = new ArrayList<Person>();
+
 		
 			
 		
@@ -49,7 +50,7 @@ public class SecondTab extends MyTableModel implements ActionListener{
 	            }*/;
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 		
-		TableImplementation exemplo = new TableImplementation(tablePatientsList);
+		exemplo = new TableImplementation(tablePatientsList);
 		
 		JLabel searchLabel = new JLabel("Pesquisar");
 		searchField = new JTextField(50);

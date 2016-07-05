@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.LineNumberInputStream;
 
 
 
@@ -231,8 +232,8 @@ public class MyTableModel extends AbstractTableModel {
        
         
         System.out.println("Entrou em addPaciente");
-        
         fireTableRowsInserted(ultimoIndice, ultimoIndice);
+        //fireTableRowsInserted(linhasPatientsList.size(), linhasPatientsList.size());
     }
 
     /* Remove a linha especificada. */

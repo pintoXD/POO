@@ -38,7 +38,7 @@ import tables.MyTableModel;
 import tables.TableImplementation;
 
 
-public class FirstTab extends MyTableModel implements ActionListener {
+public class FirstTab extends TableImplementation implements ActionListener {
 	
 	private JButton medButton, testButton;
 	private String tabTitle = "Schedulling";
@@ -245,14 +245,33 @@ public class FirstTab extends MyTableModel implements ActionListener {
 			String date= dateReceive.getText().toString();
 			
 			System.out.println("Nome: "+name);
-			System.out.println("Data; "+date);
+			System.out.println("Data:"+date);
 			System.out.println("Médico:" +medic);
 			
+			if(medic.equals("<Selecionar>")){
+				JOptionPane.showMessageDialog(null, "Por favor, selecione o tipo de médico.");
+			}
+			else if(date.equals("  /  /    ")){
+				
+				JOptionPane.showMessageDialog(null, "Por favor, entre com a data");
+			}
+			else{	
 			addToList(name, date, medic, false);
-			addPaciente();
+			//addPaciente();
+			//addListaDePacientes(patientsList);
+			
+			//TableImplementation teste = new TableImplementation(patientsList);
+			//teste.teste();
+			
+					
 			JOptionPane.showMessageDialog(null, "Consulta agendada com sucesso.");
 			
+			
+			
+			
 			clearFields();
+			}
+			teste();
 			
 			}
 			
@@ -307,11 +326,37 @@ public class FirstTab extends MyTableModel implements ActionListener {
 			
 		else{	
 		patientsList = deSerialize.getList();
+		Person paciente = new Person(name, date, medic, false);
 		  if(patientsList == null)
 			    System.out.println("array não está null");
-		patientsList.add(new Person(name, date, medic, false));
-		//setPatientsList(patientsList);
-		SerializeData serialize = new SerializeData(patientsList);
+		  int count =0;
+		  
+		  int i = 0;
+		  
+		  for(i = 0; i<patientsList.size(); i++){
+			  if(patientsList.get(i).equals(paciente)){
+				  JOptionPane.showMessageDialog(null, "Paciente já agendado. Tente outra data ou outro médico");
+				  count++;
+			  
+		  }
+		  
+			  else if (patientsList.get(i).getConsultDate().equals(date) && patientsList.get(i).getMedType().equals(medic)){
+				  JOptionPane.showMessageDialog(null, "Data já ocupada. Selecione outra data ou médico");
+				  count++;
+			  }
+		  
+			  
+			  else
+				  count = 0;
+		  
+
+		}
+		  
+		  if(count == 0){
+			patientsList.add(paciente);
+			//setPatientsList(patientsList);
+			SerializeData serialize = new SerializeData(patientsList);	  
+		  }
 		}
 	}
 	
@@ -334,10 +379,13 @@ public class FirstTab extends MyTableModel implements ActionListener {
 	public List<Person> getPatientsList() {
 		
 		DeserializeData localDeserialize = new DeserializeData("PatientsData.ser");
+		/*if(localDeserialize.getList() == null && patientsListOuter == null){
+			createFirstPane();		
+			
+		}
 		
 		
-		
-		if(patientsListOuter == null){
+		else*/ if(patientsListOuter == null){
 			System.out.println("Tá Null o Array em getPatientsList FirstTab   ");
 			
 			setPatientsList(localDeserialize.getList());

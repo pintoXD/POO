@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import sourceCodes.*;
 /** 
@@ -22,16 +23,26 @@ public class TableImplementation extends JPanel {
     
     private List <Person> localPatientsList;
     private DeserializeData deserializeTask;
-    
+    public MyTableModel tableModel;
 
-    public TableImplementation() {
+    public TableImplementation(List<Person> tablePatientsList) {
         super(new GridLayout(1,0));
         
-        deserializeTask = new DeserializeData("PatientsList.ser");
         
-        localPatientsList = deserializeTask.getList();
+        localPatientsList = new ArrayList<Person>(tablePatientsList);
         
-        MyTableModel tableModel = new MyTableModel(localPatientsList);
+        
+       // deserializeTask = new DeserializeData("PatientsData.ser");
+        
+       // localPatientsList = deserializeTask.getList();
+       /* 
+        if(localPatientsList == null){
+        	System.out.println("Lista de pacientes vazia");
+        }
+       */ 
+        
+        
+        tableModel = new MyTableModel(localPatientsList);
         
        
         

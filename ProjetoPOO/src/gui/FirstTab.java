@@ -2,6 +2,8 @@ package gui;
 
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -18,26 +20,46 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
+import javax.swing.text.MaskFormatter;
 
 import sourceCodes.*;
+import tables.MyTableModel;
+import tables.TableImplementation;
 
 
-public class FirstTab extends JPanel implements ActionListener {
+public class FirstTab extends MyTableModel implements ActionListener {
 	
 	private JButton medButton, testButton;
 	private String tabTitle = "Schedulling";
-	private JTextField nameReceive, dateReceive;
+	private JTextField nameReceive;
+	private JFormattedTextField dateReceive;
 	private JComboBox medList;
 	private int count = 0;
-	//private List <Person> patientsList;
+	private List <Person> patientsListOuter;
 	
+	public void setPatientsList(List<Person> patientsList) {
+		this.patientsListOuter = patientsList;
+	
+		if(this.patientsListOuter == null){
+			System.out.println("Tá Null o Array em setPatientsList FirstTab   ");
+		}
+	
+	}
+
+
+
+
 	public JPanel createFirstPane(){
 		
 		//patientsList = list.getList();
@@ -76,8 +98,11 @@ public class FirstTab extends JPanel implements ActionListener {
 		
 		
 		 nameReceive = new JTextField(50);
-		 dateReceive = new JTextField(50);
-		
+		 
+			
+			DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+			 dateReceive = new JFormattedTextField(df);
+			 dateReceive.setColumns(20);
 		
 		FirstTab teste = new FirstTab();
 		ButtonHandler handler = teste.new ButtonHandler(medButton, testButton, medList, nameReceive, dateReceive);
@@ -89,6 +114,18 @@ public class FirstTab extends JPanel implements ActionListener {
 		testButton.addActionListener(handler);
 		
 		
+		this.patientsListOuter = handler.returnList();
+		
+
+
+		
+       // MaskFormatter dateMask = new MaskFormatter("##/##/####");
+      //  dateMask.install(tf);
+		
+		
+		
+		
+		
 		//buttonPanel.add(medButton);
 		//buttonPanel.add(testButton);
 				
@@ -96,6 +133,16 @@ public class FirstTab extends JPanel implements ActionListener {
 		//genericPanel.add(buttonPanel);
 
 		/*-------------------------------------*/
+
+		
+
+        try {
+            MaskFormatter dateMask = new MaskFormatter("##/##/####");
+            dateMask.install(dateReceive);
+        } catch (ParseException ex) {
+            Logger.getLogger(MaskFormatter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
 		genericPanelOne.add(dateReceive,FlowLayout.LEFT);
 		genericPanelOne.add(date,FlowLayout.LEFT);
 		
@@ -106,8 +153,8 @@ public class FirstTab extends JPanel implements ActionListener {
 		/*-------------------------------------*/
 		
 		
-		screenFirstTab.add(medButton, LEFT_ALIGNMENT);
-		screenFirstTab.add(testButton, LEFT_ALIGNMENT);
+		screenFirstTab.add(medButton, FlowLayout.LEFT );
+		screenFirstTab.add(testButton, FlowLayout.LEFT);
 		
 		
 		screenFirstTab.add(medList, FlowLayout.LEFT);
@@ -127,7 +174,7 @@ public class FirstTab extends JPanel implements ActionListener {
 
 		//screenMedTab.add(buttonPanel, BorderLayout.PAGE_START);
 		
-		
+	
 	
 		
 		
@@ -163,11 +210,11 @@ public class FirstTab extends JPanel implements ActionListener {
 		 private JButton medButton, testButton;
 		 private JComboBox medList;
 		 private JTextField nameReceive;
-		 private JTextField dateReceive;
+		 private JFormattedTextField dateReceive;
 		 private List <Person> patientsList;
 		 private DeserializeData deSerialize = new DeserializeData("PatientsData.ser");
 		 
-		public ButtonHandler(JButton medButton, JButton testButton, JComboBox medList, JTextField nameReceive, JTextField dateReceive ) {
+		public ButtonHandler(JButton medButton, JButton testButton, JComboBox medList, JTextField nameReceive, JFormattedTextField dateReceive ) {
 	
 			// TODO Auto-generated constructor stub
 		
@@ -202,9 +249,9 @@ public class FirstTab extends JPanel implements ActionListener {
 			System.out.println("Médico:" +medic);
 			
 			addToList(name, date, medic, false);
-			
+			addPaciente();
 			JOptionPane.showMessageDialog(null, "Consulta agendada com sucesso.");
-			count++;
+			
 			clearFields();
 			
 			}
@@ -220,32 +267,60 @@ public class FirstTab extends JPanel implements ActionListener {
 	
 	public void clearFields(){
 		medList.setSelectedIndex(0);
+		
+        try {
+            MaskFormatter dateMask = new MaskFormatter("##/##/####");
+            dateMask.install(dateReceive);
+        } catch (ParseException ex) {
+            Logger.getLogger(MaskFormatter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+		
+		
+		
 		nameReceive.setText(null);
-		dateReceive.setText(null);
+		
 		
 		
 	}
 	
 	public void addToList(String name, String date, String medic, boolean state){
 		
+		
+		if(patientsList == null){
+			System.out.println("PatiensList null em addToList");
+		}
+		
+		
+		
+		
 		if(deSerialize.getList() == null){
 			patientsList = new ArrayList<Person>();
 		
+			//tableModel.addPaciente(new Person(name, date, medic, false));
 			patientsList.add(new Person(name, date, medic, false));
 			
+			
+			//setPatientsList(patientsList);
 			SerializeData serialize = new SerializeData(patientsList);
 		}
 			
 		else{	
 		patientsList = deSerialize.getList();
-		
+		  if(patientsList == null)
+			    System.out.println("array não está null");
 		patientsList.add(new Person(name, date, medic, false));
-		
+		//setPatientsList(patientsList);
 		SerializeData serialize = new SerializeData(patientsList);
 		}
 	}
 	
-	
+  public List<Person> returnList(){
+	  
+	  if(patientsList == null)
+	    System.out.println("ReturnList array está null");
+	  return patientsList;
+  }
 	
 	
 	}
@@ -256,6 +331,20 @@ public class FirstTab extends JPanel implements ActionListener {
 		
 	}
 	
-	
+	public List<Person> getPatientsList() {
+		
+		DeserializeData localDeserialize = new DeserializeData("PatientsData.ser");
+		
+		
+		
+		if(patientsListOuter == null){
+			System.out.println("Tá Null o Array em getPatientsList FirstTab   ");
+			
+			setPatientsList(localDeserialize.getList());
+			
+		}
+		
+		return patientsListOuter;
+	}	
 
 }

@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel; 
 import javax.swing.JTabbedPane;
@@ -11,6 +12,7 @@ import tables.MyTableModel;
 import tables.TableImplementation;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,9 +33,12 @@ public class SecondTab extends MyTableModel implements ActionListener{
 	private List<Person> tablePatientsList;
 	
 	
-	public JPanel createSecondPane(){
+	public JPanel createSecondPane(List<Person>tablePatientsList){
 		
 		
+		tablePatientsList = new ArrayList<Person>(tablePatientsList);
+		
+			
 		
 		JPanel screenMedTab = new JPanel(new BorderLayout())/*{
 				//Make one test to see if it is really needed
@@ -44,9 +49,9 @@ public class SecondTab extends MyTableModel implements ActionListener{
 	            }*/;
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 		
-		TableImplementation exemplo = new TableImplementation();
+		TableImplementation exemplo = new TableImplementation(tablePatientsList);
 		
-		
+		JLabel searchLabel = new JLabel("Pesquisar");
 		searchField = new JTextField(50);
 		
 		saveButton = new JButton("Salvar");	
@@ -71,12 +76,14 @@ public class SecondTab extends MyTableModel implements ActionListener{
 		buttonPanel.add(saveButton);
 		buttonPanel.add(clearButton);
 		
+		JPanel listAndSearch = new JPanel(new FlowLayout());
+		
+		listAndSearch.add(optionList);
+		listAndSearch.add(searchLabel);
+		listAndSearch.add(searchField);
 		
 		
-		
-		
-		
-		
+		screenMedTab.add(listAndSearch, BorderLayout.NORTH);
 		screenMedTab.add(exemplo, BorderLayout.CENTER);
 		screenMedTab.add(buttonPanel, BorderLayout.SOUTH);
 		
@@ -133,13 +140,15 @@ public class SecondTab extends MyTableModel implements ActionListener{
 			
 			if(event.getSource() == optionList){
 				if(optionList.getSelectedItem().toString().equals("Excluir")){
+					System.out.println();
+					
 					setPermissionVerifier(0);
 					setLastColumn(1);
 							
 					
 				}
 				
-				if(optionList.getSelectedItem().toString().equals("Alterar Dados")){
+				if(optionList.getSelectedItem().toString().equals("Alterar")){
 					setPermissionVerifier(1);
 									
 				}
@@ -186,9 +195,9 @@ public class SecondTab extends MyTableModel implements ActionListener{
 		
 	}
 	*/
-	public void addToList(String name, String date, String medic, boolean state){
+	public void addToFile(){
 		
-		if(deSerialize.getList() == null){
+		/*if(deSerialize.getList() == null){
 			patientsList = new ArrayList<Person>();
 		
 			patientsList.add(new Person(name, date, medic, false));
@@ -196,19 +205,21 @@ public class SecondTab extends MyTableModel implements ActionListener{
 			SerializeData serialize = new SerializeData());
 		}
 			
-		else{	
-		patientsList = deSerialize.getList();
+		else{	*/
 		
-		patientsList.add(new Person(name, date, medic, false));
 		
-		SerializeData serialize = new SerializeData(patientsList);
+		//patientsList = deSerialize.getList();
+		
+		//patientsList.add(new Person(name, date, medic, false));
+		
+		SerializeData serialize = new SerializeData(getLinhasPatientsList());
 		}
 	}
 	
 	
 	
 	
-	}
+	
 	
 	
 	

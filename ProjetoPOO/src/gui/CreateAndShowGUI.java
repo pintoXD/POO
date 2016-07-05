@@ -8,19 +8,27 @@ public class CreateAndShowGUI {
 	
 	public void createAndShowGUI(){
 		
-		JFrame frame = new JFrame("Teste Frame");
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JFrame mainFrame = new JFrame("Tela Principal");
+		
+		
+
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
 		
 		//MainUserInterface demo = new  MainUserInterface();
-		AddComponentsToPanel demo = new AddComponentsToPanel();
+		AddComponentsMainFrame window = new AddComponentsMainFrame();
 		
-		 demo.addComponentsToPanel(frame.getContentPane());
+		 window.addComponentsToMainPanel(mainFrame.getContentPane());
 		 
-		 frame.pack();
-		 frame.setSize(1000, 250);
-		 frame.setLocationRelativeTo(null);
-		 frame.setVisible(true);
+		 mainFrame.pack();
+		 mainFrame.setSize(1000, 250);
+		 mainFrame.setLocationRelativeTo(null);
+		 mainFrame.setVisible(true);
+		
+
 		
 	}
 	

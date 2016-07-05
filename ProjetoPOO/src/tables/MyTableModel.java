@@ -25,7 +25,11 @@ public class MyTableModel extends AbstractTableModel {
     /* Lista de Sócios que representam as linhas. */
     private List<Person> linhasPatientsList;
 
-    private int permissionVerifier;
+    public List<Person> getLinhasPatientsList() {
+		return linhasPatientsList;
+	}
+
+	private int permissionVerifier;
     private int lastColumn;
     
     /* Array de Strings com o nome das colunas. */
@@ -58,7 +62,8 @@ public class MyTableModel extends AbstractTableModel {
     /* Cria um FuncionarioTableModel carregado com
      * a lista de sócios especificada. */
     public MyTableModel(List<Person> listaDePacientes) {
-        linhasPatientsList = new ArrayList<Person>(listaDePacientes);
+        this.linhasPatientsList = new ArrayList<Person>(listaDePacientes);
+        fireTableRowsInserted(linhasPatientsList.size() - 1, linhasPatientsList.size() - 1);
     }
 
 
@@ -212,9 +217,9 @@ public class MyTableModel extends AbstractTableModel {
     }
 
     /* Adiciona um registro. */
-    public void addPaciente(Person paciente) {
+    public void addPaciente() {
         // Adiciona o registro.
-        linhasPatientsList.add(paciente);
+       // linhasPatientsList.add(paciente);
 
         // Pega a quantidade de registros e subtrai um para achar
         // o último índice. É preciso subtrair um, pois os índices
@@ -223,6 +228,10 @@ public class MyTableModel extends AbstractTableModel {
 
         // Reporta a mudança. O JTable recebe a notificação
         // e se redesenha permitindo que visualizemos a atualização.
+       
+        
+        System.out.println("Entrou em addPaciente");
+        
         fireTableRowsInserted(ultimoIndice, ultimoIndice);
     }
 

@@ -236,10 +236,9 @@ public class FirstTab extends TableImplementation implements ActionListener {
 		//É aqui que fica os eventos pra engatilhar a comparaçãoe gravaçãode dados pro agendamento
 		public void actionPerformed(ActionEvent event)
 		{
-			//JOptionPane.showMessageDialog(FirstTab.this, String.format("Você pressionou: %s", event.getActionCommand()));
 			if(event.getSource() == medButton){
-			//JOptionPane.showMessageDialog(null, "O botão medButton foi clicado");
 			
+			boolean aux = true;	
 			String medic = medList.getSelectedItem().toString();
 			String name= nameReceive.getText().toString();
 			String date= dateReceive.getText().toString();
@@ -250,30 +249,43 @@ public class FirstTab extends TableImplementation implements ActionListener {
 			
 			if(medic.equals("<Selecionar>")){
 				JOptionPane.showMessageDialog(null, "Por favor, selecione o tipo de médico.");
+				aux = false;
 			}
 			else if(date.equals("  /  /    ")){
 				
 				JOptionPane.showMessageDialog(null, "Por favor, entre com a data");
+				aux = false;
+				
 			}
-			else{	
-			addToList(name, date, medic, false);
+				
+			
 			//addPaciente();
 			//addListaDePacientes(patientsList);
 			
 			//TableImplementation teste = new TableImplementation(patientsList);
 			//teste.teste();
 			
-					
+			if(aux){
+			
+			
+			addToList(name, date, medic, false);	
+				
+				
 			JOptionPane.showMessageDialog(null, "Consulta agendada com sucesso.");
-			
-			
-			
 			
 			clearFields();
 			}
-			teste();
 			
 			}
+			
+			
+			
+			
+			
+			
+			teste();
+			
+			
 			
 			
 			if(event.getSource() == testButton){

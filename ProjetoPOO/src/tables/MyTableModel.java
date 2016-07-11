@@ -232,7 +232,13 @@ public class MyTableModel extends AbstractTableModel {
        
         
         System.out.println("Entrou em addPaciente");
+        
+        fireTableDataChanged();
+                
+        fireTableStructureChanged();
+        
         fireTableRowsInserted(ultimoIndice, ultimoIndice);
+        
         //fireTableRowsInserted(linhasPatientsList.size(), linhasPatientsList.size());
     }
 

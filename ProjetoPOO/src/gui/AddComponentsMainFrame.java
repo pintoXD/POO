@@ -74,7 +74,7 @@ public class AddComponentsMainFrame implements ActionListener {
 				//JOptionPane.showMessageDialog(FirstTab.this, String.format("Você pressionou: %s", event.getActionCommand()));
 			if(event.getSource() == medButton){
 				JFrame medFrame = new JFrame("Painel Médico");
-				medFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				medFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				
 				AddComponentsToMedPanel medWindow = new AddComponentsToMedPanel();
 				
@@ -96,7 +96,7 @@ public class AddComponentsMainFrame implements ActionListener {
 			if(event.getSource() == secretaryButton){
 				
 				JFrame secretaryFrame = new JFrame("Painel Secretára");	
-				secretaryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				secretaryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				AddComponentsToPanel demo = new AddComponentsToPanel();
 				
 				 demo.addComponentsToPanel(secretaryFrame.getContentPane());

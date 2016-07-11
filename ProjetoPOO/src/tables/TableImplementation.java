@@ -27,30 +27,32 @@ public class TableImplementation extends JPanel implements TableModelListener{
     private DeserializeData deserializeTask;
     private MyTableModel tableModel;
     private JTable table;
-    public TableImplementation(List<Person> tablePatientsList) {
+    public TableImplementation(/*List<Person> tablePatientsList*/) {
         super(new GridLayout(1,0));
         
         
         //localPatientsList = new ArrayList<Person>(tablePatientsList);
         
         
-       // deserializeTask = new DeserializeData("PatientsData.ser");
+       deserializeTask = new DeserializeData("PatientsData.ser");
         
-       // localPatientsList = deserializeTask.getList();
+       localPatientsList = deserializeTask.getList();
        /* 
         if(localPatientsList == null){
         	System.out.println("Lista de pacientes vazia");
         }
        */ 
         
-        if(tablePatientsList == null){
+        if(localPatientsList == null){
         	 this.tableModel = new MyTableModel();
         	 System.out.println("Tá vazio aqui ein");
+        	 
         	 
         }
         else {  
         	System.out.println("Tá vazio aqui ein");
-        this.tableModel = new MyTableModel(tablePatientsList);
+        this.tableModel = new MyTableModel(localPatientsList);
+        tableModel.addPaciente();
         
         }
        tableModel.addPaciente();
@@ -74,13 +76,13 @@ public class TableImplementation extends JPanel implements TableModelListener{
         add(scrollPane);
     }
    
-    
+    /*
     
     public TableImplementation() {
 		// TODO Auto-generated constructor stub
 	}
     
-    
+    */
     
    public void teste(){
 	   

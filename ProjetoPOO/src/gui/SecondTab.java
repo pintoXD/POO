@@ -31,9 +31,10 @@ public class SecondTab extends MyTableModel implements ActionListener{
 	private JComboBox optionList;
 	private JTextField searchField;
 	private List<Person> tablePatientsList;
-	TableImplementation exemplo;
+	private JPanel screenMedTab = new JPanel(new BorderLayout());
+	TableImplementation exemplo = new TableImplementation();
 	
-	public JPanel createSecondPane(List<Person>tablePatientsList){
+	public JPanel createSecondPane(/*List<Person>tablePatientsList*/){
 		
 		if(tablePatientsList == null)
 			tablePatientsList = new ArrayList<Person>();
@@ -41,7 +42,7 @@ public class SecondTab extends MyTableModel implements ActionListener{
 		
 			
 		
-		JPanel screenMedTab = new JPanel(new BorderLayout())/*{
+		/*screenMedTab = new JPanel(new BorderLayout())/*{
 				//Make one test to see if it is really needed
 	            public Dimension getPreferredSize() {
 	                Dimension size = super.getPreferredSize();
@@ -50,7 +51,7 @@ public class SecondTab extends MyTableModel implements ActionListener{
 	            }*/;
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 		
-		exemplo = new TableImplementation(tablePatientsList);
+	//	exemplo = new TableImplementation(/*tablePatientsList*/);
 		
 		JLabel searchLabel = new JLabel("Pesquisar");
 		searchField = new JTextField(50);
@@ -70,12 +71,14 @@ public class SecondTab extends MyTableModel implements ActionListener{
 		saveButton.addActionListener(handler);
 		clearButton.addActionListener(handler);
 		
-		
+	
 		
 		
 		
 		buttonPanel.add(saveButton);
 		buttonPanel.add(clearButton);
+		
+		
 		
 		JPanel listAndSearch = new JPanel(new FlowLayout());
 		
@@ -84,9 +87,9 @@ public class SecondTab extends MyTableModel implements ActionListener{
 		listAndSearch.add(searchField);
 		
 		
-		screenMedTab.add(listAndSearch, BorderLayout.NORTH);
-		screenMedTab.add(exemplo, BorderLayout.CENTER);
-		screenMedTab.add(buttonPanel, BorderLayout.SOUTH);
+		this.screenMedTab.add(listAndSearch, BorderLayout.NORTH);
+		this.screenMedTab.add(exemplo, BorderLayout.CENTER);
+		this.screenMedTab.add(buttonPanel, BorderLayout.SOUTH);
 		
 		
 	
@@ -145,7 +148,12 @@ public class SecondTab extends MyTableModel implements ActionListener{
 					
 					setPermissionVerifier(0);
 					setLastColumn(1);
-							
+					
+					screenMedTab.remove(exemplo);
+					
+					screenMedTab.add(exemplo);
+					
+					
 					
 				}
 				

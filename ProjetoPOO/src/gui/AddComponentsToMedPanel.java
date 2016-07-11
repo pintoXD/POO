@@ -22,7 +22,7 @@ public class AddComponentsToMedPanel {
 		JTabbedPane tabbedPane = new JTabbedPane();
 		
 		
-		tabbedPane.add(secondTab.getTabTitle(), secondTab.createSecondPane(listLocal));
+		tabbedPane.add(secondTab.getTabTitle(), secondTab.createSecondPane(/*listLocal)*/));
 		//tabbedPane.add(thirdTab.getTabTitle(), thirdTab.createThirdPane());
 		//tabbedPane.add(forthTab.getTabTitle(), forthTab.createForthPane());
 		//tabbedPane.add(fifthTab.getTabTitle(), fifthTab.createFifthPane());

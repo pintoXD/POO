@@ -27,7 +27,7 @@ public class AddComponentsToPanel {
 		JTabbedPane tabbedPane = new JTabbedPane();
 		
 		tabbedPane.add(schedulling.getTabTitle(), schedulling.createFirstPane());
-		tabbedPane.add(secondTab.getTabTitle(), secondTab.createSecondPane(schedulling.getPatientsList()));
+		tabbedPane.add(secondTab.getTabTitle(), secondTab.createSecondPane(/*schedulling.getPatientsList()*/));
 		//tabbedPane.add(thirdTab.getTabTitle(), thirdTab.createThirdPane());
 		//tabbedPane.add(forthTab.getTabTitle(), forthTab.createForthPane());
 		//tabbedPane.add(fifthTab.getTabTitle(), fifthTab.createFifthPane());

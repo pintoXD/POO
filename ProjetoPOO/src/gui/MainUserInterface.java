@@ -74,11 +74,11 @@ public class MainUserInterface extends JFrame {
         
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+      //  javax.swing.SwingUtilities.invokeLater(new Runnable() {
+          //  public void run() {
                 teste.createAndShowGUI();
-            }
-        });
+          //  }
+       // });
 		
 		
 		

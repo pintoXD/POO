@@ -41,7 +41,7 @@ import tables.TableImplementation;
 public class FirstTab extends TableImplementation implements ActionListener {
 	
 	private JButton medButton, testButton;
-	private String tabTitle = "Schedulling";
+	private String tabTitle = "Agendamento";
 	private JTextField nameReceive;
 	private JFormattedTextField dateReceive;
 	private JComboBox medList;

@@ -25,7 +25,7 @@ import javax.swing.JComboBox;
 public class SecondTab extends MyTableModel implements ActionListener{
 	
 	private JButton saveButton, clearButton;
-	private String tabTitle = "Schedulling";
+	private String tabTitle = "Gerenciamento";
 	private int extraWindowWidth = 100;
 	private JTabbedPane tabbedPane;
 	private JComboBox optionList;

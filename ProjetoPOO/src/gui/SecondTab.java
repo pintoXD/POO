@@ -138,15 +138,31 @@ public class SecondTab extends MyTableModel implements ActionListener{
 		
 		//TRATA EVENTO DO BOTÃO
 		//É aqui que fica os eventos pra engatilhar a comparaçãoe gravaçãode dados pro agendamento
+		
+		//Por conta de problemas com os métodos da firexxx do TableModel, a JTable não atualiza seu estado graficamente.
+		
 		public void actionPerformed(ActionEvent event)
 		{
 			//JOptionPane.showMessageDialog(FirstTab.this, String.format("Você pressionou: %s", event.getActionCommand()));
-			
+			//Ações da ComboBox e JTextField
+			/**
+			 * Como ideia geral, ao selecionar Excluir ou Alterar na ComoboBox, a tabela alteraria suas permissões possibilitando uma exlusão ou 
+			 * edição de determinado paciente, mas, como o método fireTableChenged e os demais firexxx não estão funcionando, não
+			 * foi possível atualizar a interface gráfica para que permitisse essas alterações.
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * */
 			if(event.getSource() == optionList){
 				if(optionList.getSelectedItem().toString().equals("Excluir")){
 					System.out.println();
 					
-					setPermissionVerifier(0);
+					setPermissionVerifier(0);//Altera a permissão de edição do MyTableModel, por meio do método isCellEditable
+					//Logo após isso, deveria ser possível editar a tabela, mas não foi possível atualiar o estado da tabela.
+					//fireTableChanged não funciona;
+					
 					setLastColumn(1);
 					
 					screenMedTab.remove(exemplo);

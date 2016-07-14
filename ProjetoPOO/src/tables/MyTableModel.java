@@ -184,7 +184,7 @@ public class MyTableModel extends AbstractTableModel {
 	
 	
 	
-    
+    //Método responsável por dizer ao JTable se a célula selecionada pode ser editada ou não;
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         if(getPermissionVerifier() == 1)
         	return true;
@@ -210,7 +210,7 @@ public class MyTableModel extends AbstractTableModel {
 
 
     /* Retorna o sócio da linha especificada. */
-    public Person getFuncionario(int indiceLinha) {
+    public Person getPaciente(int indiceLinha) {
             if(indiceLinha < linhasPatientsList.size()){
                 return linhasPatientsList.get(indiceLinha);
             }

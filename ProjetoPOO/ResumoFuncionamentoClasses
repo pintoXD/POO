@@ -1,0 +1,20 @@
+Professor, segue abaixo breve descrição do que cada classe do projeto realiza:
+
+
+MainUserInterface - Classe Main de todo o projeto.
+
+Classes AddComponents - Classes responsáveis por adicionar botões, abas, frames e tabelas aos painéis, e em seguida adicionar num Panel
+principal para que possam ser implementados ao chamar a Main
+
+FirstTab - Classe responável pelo casdastro dos pacientes, com interface gráfica.
+
+SecondTab -  Classe respoonsável pela lsitagem, edição e procura dos pacientes.
+
+MyTableModel - Modelo próprio de TableModel, necessário para implementar a JTable.
+
+Serialize e Deserialize - Classes responsáveis por serializar e deserializar os Arrays contendo as informações dos pacientes
+
+Person - Classe responsável por guardar as informações de cada paciente
+
+
+

@@ -40,7 +40,7 @@ import tables.TableImplementation;
 
 public class FirstTab extends TableImplementation implements ActionListener {
 	
-	private JButton medButton, testButton;
+	private JButton okButton, clearButton;
 	private String tabTitle = "Agendamento";
 	private JTextField nameReceive;
 	private JFormattedTextField dateReceive;
@@ -89,8 +89,8 @@ public class FirstTab extends TableImplementation implements ActionListener {
 		
 		medList = new JComboBox(medTypes);
 		
-		medButton = new JButton("OK");	
-		testButton = new JButton("Limpar");
+		okButton = new JButton("OK");	
+		clearButton = new JButton("Limpar");
 		
 		
 		JLabel name = new JLabel("Nome do Paciente");
@@ -105,13 +105,13 @@ public class FirstTab extends TableImplementation implements ActionListener {
 			 dateReceive.setColumns(20);
 		
 		FirstTab teste = new FirstTab();
-		ButtonHandler handler = teste.new ButtonHandler(medButton, testButton, medList, nameReceive, dateReceive);
+		ButtonHandler handler = teste.new ButtonHandler(okButton, clearButton, medList, nameReceive, dateReceive);
 		
 		medList.setSelectedIndex(0);
 		medList.addActionListener(handler);
 		
-		medButton.addActionListener(handler);
-		testButton.addActionListener(handler);
+		okButton.addActionListener(handler);
+		clearButton.addActionListener(handler);
 		
 		
 		this.patientsListOuter = handler.returnList();
@@ -153,12 +153,14 @@ public class FirstTab extends TableImplementation implements ActionListener {
 		/*-------------------------------------*/
 		
 		
-		screenFirstTab.add(medButton, FlowLayout.LEFT );
-		screenFirstTab.add(testButton, FlowLayout.LEFT);
-		
+		screenFirstTab.add(okButton, FlowLayout.LEFT );
+		screenFirstTab.add(clearButton, FlowLayout.LEFT);
+		/*-------------------------------------------*/
 		
 		screenFirstTab.add(medList, FlowLayout.LEFT);
 		screenFirstTab.add(new JLabel("Médico:"), FlowLayout.LEFT);
+		
+		/*-------------------------------------*/
 		
 		screenFirstTab.add(genericPanelOne, FlowLayout.LEFT);		
 		screenFirstTab.add(genericPanelTwo,FlowLayout.LEFT);
@@ -234,6 +236,7 @@ public class FirstTab extends TableImplementation implements ActionListener {
 		
 		//TRATA EVENTO DO BOTÃO
 		//É aqui que fica os eventos pra engatilhar a comparaçãoe gravaçãode dados pro agendamento
+		//Aqui também são tratados os casos inválidos de entrada
 		public void actionPerformed(ActionEvent event)
 		{
 			if(event.getSource() == medButton){
